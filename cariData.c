@@ -13,10 +13,14 @@ void cariData(Node* head, char* id) {
 
   while (current != NULL) {
     if (strcmp(current->data.id, id) == 0) {
-      // Serial.print("ID: "); Serial.println(current->data.id);
-      // Serial.print("Nama: "); Serial.println(current->data.nama);
-      // Serial.print("Stok: "); Serial.println(current->data.stok);
-      // ...
+      Serial.print("ID: "); Serial.println(current->data.id);
+      Serial.print("Nama: "); Serial.println(current->data.nama);
+      Serial.print("Kategori: "); Serial.println(current->data.kategori);
+      Serial.print("Stok: "); Serial.println(current->data.stok);
+      Serial.print("Lokasi: "); Serial.println(current->data.lokasi);
+      Serial.print("Status: "); Serial.println(current->data.status);
+      Serial.print("Pemilik: "); Serial.println(current->data.pemilik);
+      Serial.print("PIC: "); Serial.println(current->data.pic);
       return;
     }
     current = current->next;
