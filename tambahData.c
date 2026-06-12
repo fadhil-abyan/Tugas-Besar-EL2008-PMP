@@ -17,8 +17,8 @@ void tambahData(Node** head, Item item) {
   // Penanganan Kapasitas Memori Habis
   Node* newNode = (Node*)malloc(sizeof(Node));
   
-  if (newnode == NULL) {
-    serial.println("Gagal: Kapasitas memori tidak mencukupi!");
+  if (newNode == NULL) {
+    Serial.println("Gagal: Kapasitas memori tidak mencukupi!");
     return;
   }
 
@@ -29,7 +29,7 @@ void tambahData(Node** head, Item item) {
   if (*head == NULL) {
     *head = newNode;
   } else {
-    curent = *head;
+    current = *head;
     while (current->next != NULL) {
       current = current->next;
     }
