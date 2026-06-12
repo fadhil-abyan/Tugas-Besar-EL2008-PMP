@@ -7,7 +7,7 @@ void tambahData(Node** head, Item item) {
   Node* current = *head;
   
   while (current != NULL) {
-    if (strcmp(current->data.id, item.id) == 0 {
+    if (strcmp(current->data.id, item.id)) == 0 {
       Serial.println("Gagal: ID barang sudah terdaftar!");
       return;
     }
