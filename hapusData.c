@@ -8,7 +8,7 @@ void hapusData(Node** head, char* id) {
     Node* curr = *head;
     Node* prev = NULL;
    
-    //cek semua data dengan loop
+    //cek semua data dengan loop berdasarkan id
     while(curr != NULL && strcmp(curr->data.id,id) != 0){
         prev = curr;
         curr = curr->next;
@@ -27,7 +27,7 @@ void hapusData(Node** head, char* id) {
         return;
     }
 
-    //kasus ketiga ketika penghapusan node ada di tengah atau di akhir
+    //kasus ketiga ketika penghapusan node ada di tengah atau di akhir (lebih efisien di gabung)
     else{
         prev->next = curr->next;
         free(curr);
