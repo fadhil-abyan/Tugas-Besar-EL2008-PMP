@@ -1,7 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include "inventaris.h"
+
+static void ubahKeHurufKecil(char *str) {
+    for (int i = 0; str[i] != '\0'; i++) {
+        str[i] = tolower((unsigned char)str[i]);
+    }
+}
+
+static void ubahKeHurufBesar(char *str) {
+    for (int i = 0; str[i] != '\0'; i++) {
+        str[i] = toupper((unsigned char)str[i]);
+    }
+}
 
 static void bacaBaris(char *buf, int ukuran) {
     if (fgets(buf, ukuran, stdin) == NULL) {
@@ -21,6 +34,7 @@ static void bacaItemBaru(Item *item, int *validFlag) {
         printf("Input Anda tidak valid: ID barang tidak boleh kosong!\n");
         *validFlag = 0; return;
     }
+    ubahKeHurufBesar(item->id);
 
     printf("Nama        : ");
     bacaBaris(item->nama, sizeof(item->nama));
@@ -47,6 +61,8 @@ static void bacaItemBaru(Item *item, int *validFlag) {
 
     printf("Status (tersedia/dipinjam/rusak/habis): ");
     bacaBaris(item->status, sizeof(item->status));
+    ubahKeHurufKecil(item->status);
+    
     if (strcmp(item->status, "tersedia") != 0 && 
         strcmp(item->status, "dipinjam") != 0 && 
         strcmp(item->status, "rusak") != 0 && 
@@ -104,17 +120,21 @@ void prosesInput(Node **head) {
         } else if (strcmp(pilihan, "2") == 0) {
             printf("ID yang akan dihapus: ");
             bacaBaris(idBuf, sizeof(idBuf));
+            ubahKeHurufBesar(idBuf); 
             hapusData(head, idBuf);
 
         } else if (strcmp(pilihan, "3") == 0) {
             printf("ID yang dicari: ");
             bacaBaris(idBuf, sizeof(idBuf));
+            ubahKeHurufBesar(idBuf);
             printf("\n");
             cariData(*head, idBuf);
 
         } else if (strcmp(pilihan, "4") == 0) {
             printf("ID barang        : ");
             bacaBaris(idBuf, sizeof(idBuf));
+            ubahKeHurufBesar(idBuf); 
+            
             printf("Perubahan stok (+/-): ");
             bacaBaris(angkaBuf, sizeof(angkaBuf));
             
@@ -136,8 +156,11 @@ void prosesInput(Node **head) {
         } else if (strcmp(pilihan, "5") == 0) {
             printf("ID barang  : ");
             bacaBaris(idBuf, sizeof(idBuf));
+            ubahKeHurufBesar(idBuf); 
+            
             printf("Status baru (tersedia/dipinjam/rusak/habis): ");
             bacaBaris(statusBuf, sizeof(statusBuf));
+            ubahKeHurufKecil(statusBuf);
             updateStatus(*head, idBuf, statusBuf);
 
         } else if (strcmp(pilihan, "6") == 0) {

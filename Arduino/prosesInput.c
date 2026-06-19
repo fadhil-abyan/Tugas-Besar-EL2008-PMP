@@ -1,8 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include <avr/pgmspace.h>
 #include "inventaris.h"
+
+static void ubahKeHurufKecil(char *str) {
+    for (int i = 0; str[i] != '\0'; i++) {
+        str[i] = tolower((unsigned char)str[i]);
+    }
+}
+
+static void ubahKeHurufBesar(char *str) {
+    for (int i = 0; str[i] != '\0'; i++) {
+        str[i] = toupper((unsigned char)str[i]);
+    }
+}
 
 extern void bacaBarisSerial(char *buf, int ukuran);
 
@@ -20,6 +33,7 @@ static void bacaItemBaru(Item *item, int *validFlag) {
         printf_P(PSTR("Input Anda tidak valid: ID barang tidak boleh kosong!\n"));
         *validFlag = 0; return;
     }
+    ubahKeHurufBesar(item->id); 
 
     printf_P(PSTR("Nama        : "));
     bacaBaris(item->nama, sizeof(item->nama));
@@ -33,6 +47,7 @@ static void bacaItemBaru(Item *item, int *validFlag) {
         printf_P(PSTR("Input Anda tidak valid: Stok tidak boleh kosong!\n"));
         *validFlag = 0; return;
     }
+
     for (int i = 0; i < strlen(buffer); i++) {
         if (buffer[i] < '0' || buffer[i] > '9') {
             printf_P(PSTR("Input Anda tidak valid: Stok harus berupa angka bilangan bulat positif.\n"));
@@ -46,6 +61,8 @@ static void bacaItemBaru(Item *item, int *validFlag) {
 
     printf_P(PSTR("Status (tersedia/dipinjam/rusak/habis): "));
     bacaBaris(item->status, sizeof(item->status));
+    ubahKeHurufKecil(item->status);
+
     if (strcmp(item->status, "tersedia") != 0 && 
         strcmp(item->status, "dipinjam") != 0 && 
         strcmp(item->status, "rusak") != 0 && 
@@ -102,17 +119,21 @@ void prosesInput(Node **head) {
         } else if (strcmp(pilihan, "2") == 0) {
             printf_P(PSTR("ID yang akan dihapus: "));
             bacaBaris(idBuf, sizeof(idBuf));
+            ubahKeHurufBesar(idBuf);
             hapusData(head, idBuf);
 
         } else if (strcmp(pilihan, "3") == 0) {
             printf_P(PSTR("ID yang dicari: "));
             bacaBaris(idBuf, sizeof(idBuf));
+            ubahKeHurufBesar(idBuf);
             printf_P(PSTR("\n"));
             cariData(*head, idBuf);
 
         } else if (strcmp(pilihan, "4") == 0) {
             printf_P(PSTR("ID barang        : "));
             bacaBaris(idBuf, sizeof(idBuf));
+            ubahKeHurufBesar(idBuf);
+            
             printf_P(PSTR("Perubahan stok (+/-): "));
             bacaBaris(angkaBuf, sizeof(angkaBuf));
             
@@ -134,8 +155,11 @@ void prosesInput(Node **head) {
         } else if (strcmp(pilihan, "5") == 0) {
             printf_P(PSTR("ID barang  : "));
             bacaBaris(idBuf, sizeof(idBuf));
+            ubahKeHurufBesar(idBuf);
+            
             printf_P(PSTR("Status baru (tersedia/dipinjam/rusak/habis): "));
             bacaBaris(statusBuf, sizeof(statusBuf));
+            ubahKeHurufKecil(statusBuf); 
             updateStatus(*head, idBuf, statusBuf);
 
         } else if (strcmp(pilihan, "6") == 0) {
