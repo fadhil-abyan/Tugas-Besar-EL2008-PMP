@@ -14,14 +14,14 @@ void cariData(Node* head, char* id) {
 
   while (current != NULL) {
     if (strcmp(current->data.id, id) == 0) {
-      print("ID: %s\n", current->data.id);
-      print("Nama: %s\n", current->data.nama);
-      print("Kategori: %s\n", current->data.kategori);
-      print("Stok: %d\n", current->data.stok);
-      print("Lokasi: %s\n", current->data.lokasi);
-      print("Status: %s\n", current->data.status);
-      print("Pemilik: %s\n", current->data.pemilik);
-      print("PIC: %s\n", current->data.pic);
+      printf("ID: %s\n", current->data.id);
+      printf("Nama: %s\n", current->data.nama);
+      printf("Kategori: %s\n", current->data.kategori);
+      printf("Stok: %d\n", current->data.stok);
+      printf("Lokasi: %s\n", current->data.lokasi);
+      printf("Status: %s\n", current->data.status);
+      printf("Pemilik: %s\n", current->data.pemilik);
+      printf("PIC: %s\n", current->data.pic);
       return;
     }
     current = current->next;

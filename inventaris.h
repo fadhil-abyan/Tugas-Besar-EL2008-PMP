@@ -61,5 +61,11 @@ void tampilSemua(Node* head);
  */
 void tampilRingkasan(Node* head);
 
+/**
+ * @brief Menerima, membaca, dan memproses pilihan menu serta input data dari Serial Monitor.
+ *        Ini adalah loop utama program; dipanggil satu kali dari main().
+ * @param head Pointer ganda ke head karena isi data ingin diubah melalui input pengguna.
+ */
+void prosesInput(Node** head);
 
 #endif
