@@ -9,7 +9,7 @@ void tambahData(Node** head, Item item) {
   
   while (current != NULL) {
     if (strcmp(current->data.id, item.id) == 0) {
-      printf("Gagal: ID barang sudah terdaftar!");
+      printf("Gagal: ID barang sudah terdaftar!\n");
       return;
     }
     current = current->next;
@@ -19,7 +19,7 @@ void tambahData(Node** head, Item item) {
   Node* newNode = (Node*)malloc(sizeof(Node));
   
   if (newNode == NULL) {
-    printf("Gagal: Kapasitas memori tidak mencukupi!");
+    printf("Gagal: Kapasitas memori tidak mencukupi!\n");
     return;
   }
 
@@ -36,5 +36,5 @@ void tambahData(Node** head, Item item) {
     }
     current->next = newNode;
   }
-  printf("Sukses: Data berhasil ditambahkan!");
+  printf("Sukses: Data berhasil ditambahkan!\n");
 }

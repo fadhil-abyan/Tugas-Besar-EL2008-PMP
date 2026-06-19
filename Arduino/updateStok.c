@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <avr/pgmspace.h>
 #include "inventaris.h"
 
 void updateStok(Node* head, char* id, int jumlah) {
@@ -10,12 +11,12 @@ void updateStok(Node* head, char* id, int jumlah) {
     }
 
     if (current == NULL) {
-        printf("Data tidak ditemukan\n");
+        printf_P(PSTR("Data tidak ditemukan\n"));
         return;
     }
 
     if (current->data.stok + jumlah < 0) {
-        printf("Stok tidak mencukupi\n");
+        printf_P(PSTR("Stok tidak mencukupi\n"));
         return;
     }
 
@@ -26,4 +27,5 @@ void updateStok(Node* head, char* id, int jumlah) {
     } else if (strcmp(current->data.status, "habis") == 0) {
         strcpy(current->data.status, "tersedia");
     }
+    printf_P(PSTR("Sukses: Stok berhasil diperbarui!\n"));
 }

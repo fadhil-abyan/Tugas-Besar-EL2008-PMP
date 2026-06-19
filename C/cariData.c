@@ -8,7 +8,7 @@ void cariData(Node* head, char* id) {
   Node* current = head;
 
   if (current == NULL) {
-    printf("Inventaris kosong. Tidak ada data yang dapat dicari!");
+    printf("Inventaris kosong. Tidak ada data yang dapat dicari!\n");
     return;
   }
 
@@ -26,5 +26,5 @@ void cariData(Node* head, char* id) {
     }
     current = current->next;
   }
-  printf("Pencarian Gagal: ID tidak ditemukan di dalam sistem!");
+  printf("Pencarian Gagal: ID tidak ditemukan di dalam sistem!\n");
 }
