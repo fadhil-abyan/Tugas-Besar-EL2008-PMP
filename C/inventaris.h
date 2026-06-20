@@ -2,14 +2,14 @@
 #define INVENTARIS_H
 
 typedef struct Item {
-    char id[10];
-    char nama[50];
-    char kategori[30];
+    char id[6];
+    char nama[25];
+    char kategori[20];
     int stok;
-    char lokasi[30];
-    char status[20];    // status: "tersedia", "dipinjam", "rusak", "habis"
-    char pemilik[30];
-    char pic[30];
+    char lokasi[15];
+    char status[10];    // status: "tersedia", "dipinjam", "rusak", "habis"
+    char pemilik[10];
+    char pic[10];
 } Item;
 
 typedef struct Node {

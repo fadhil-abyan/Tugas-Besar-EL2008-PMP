@@ -22,10 +22,12 @@ void hapusData(Node** head, char* id) {
         Node *temp = curr;
         *head = curr->next;
         free(temp);
+        printf_P(PSTR("Sukses: Data berhasil dihapus!\n"));
         return;
     } else {
         prev->next = curr->next;
         free(curr);
+        printf_P(PSTR("Sukses: Data berhasil dihapus!\n"));
         return;
     }
 }

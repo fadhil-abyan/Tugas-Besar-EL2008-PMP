@@ -24,6 +24,7 @@ void hapusData(Node** head, char* id) {
         Node *temp = curr;
         *head = curr->next;
         free(temp);
+        printf("Sukses: Data berhasil dihapus!\n");
         return;
     }
 
@@ -31,6 +32,7 @@ void hapusData(Node** head, char* id) {
     else{
         prev->next = curr->next;
         free(curr);
+        printf("Sukses: Data berhasil dihapus!\n");
         return;
     }
 
