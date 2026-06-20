@@ -1,4 +1,4 @@
-# Makefile — Sistem Inventarisasi Laboratorium (versi terintegrasi & diperbaiki)
+# Makefile — Sistem Inventarisasi Laboratorium
 # Penggunaan:
 #   make        -> compile
 #   make run    -> compile + jalankan

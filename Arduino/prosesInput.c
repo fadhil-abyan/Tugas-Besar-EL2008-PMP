@@ -96,8 +96,8 @@ static void cetakMenu(void) {
 
 void prosesInput(Node **head) {
     char pilihan[8];
-    char idBuf[10];
-    char statusBuf[20];
+    char idBuf[6];
+    char statusBuf[10];
     char angkaBuf[32];
     Item itemBaru;
 
